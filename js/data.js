@@ -81,8 +81,7 @@ var peopleForm = [{
     "required": true,
     "width": "3",
     "placeholder": "例：天河区",
-    "title": "区/县/市",
-    "hint":"（直辖市请留空）"
+    "title": "区/县/市"
 }, {
     "id": "Phone",
     "type": "tel",
@@ -97,7 +96,7 @@ var peopleForm = [{
     "width": "8",
     "required": true,
     "placeholder": "例：天府路 1 号天河区人民政府 339 室",
-    "title": "住址"
+    "title": "常住地址（如不知道可以写身份证上的）"
 }, {
     "id": "Occupation",
     "type": "text",
