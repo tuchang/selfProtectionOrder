@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>自助人身安全保护令申请</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+    <header>
+        <div class="collapse bg-dark d-print-none" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 py-4">
+                    <h4 class="text-white">联系作者</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="" class="text-white">李瀚明 Jason</a></li>
+                            <li><a href="mailto:jason@hanming.li" class="text-white">电子邮件</a></li>
+                        </ul>
+                        <h4 class="text-white">应用简介</h4>
+                        <p class="text-muted">软件可协助您快速填写申请《中华人民共和国反家庭暴力法》下《人身安全保护令》的申请，并根据位置指引您最近的申请提交地点。</p>
+                        <p class="text-muted">软件通过纯 JavaScript 实现纯客户端运行，确保您的隐私性信息无泄露之虞。您可以直接在网页上打印或保存填写好的电子文书。</p>
+                        </div>
+                    <div class="col-sm-8 py-4">
+                        <h4 class="text-white">郑重声明</h4>
+                        <p class="text-muted">感谢您使用本表单。我对受害人的遭遇表示深刻同情，并乐意为您和受害人提供力所能及的协助。在申请之前，请阅读以下注意事项：</p>
+                        <p class="text-muted">本人已经尽一切合理努力在表单中涵盖所有的情况，但部分情况恕未能尽录。本人恕不对使用此表单产生的任何直接或间接后果负责。</p>
+                        <p class="text-muted">本软件无服务器，因此无论开发者还是服务商，都无法看到您的个人信息。但软件的「寻找最近法院」功能需要地理位置，请您悉知。</p>
+                        <p class="text-muted">您若继续填写本表单，则视同您已经同意此段注意事项。如果您对本表单有疑问，请关闭网页，并联系您附近的律师或法律专业人士。</p>
+                        <p class="text-muted">根据《中华人民共和国反家庭暴力法》第十九条，家庭暴力受害人可向法律援助机构申请获取申请、执行、乃至诉讼阶段的法律援助。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> -->
+                    <strong>自助人身安全保护令申请</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <section class="jumbotron text-center d-print-none">
+        <div class="container">
+            <h1 class="jumbotron-heading">自助人身安全保护令申请表单</h1>
+        </div>
+    </section>
+    <div class="album text-muted">
+        <div class="container d-print-none">
+            <div class="row" id="pic-list">
+            </div>
+        </div>
+        <div class="container d-print-block">
+            <div class="row" id="final_request" style="display:none">
+            </div>
+        </div>
+    </div>
+    <footer class="text-muted d-print-none">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">回到顶端</a>
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.14.1/esm/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="js/template-web.js"></script>
+    <script id="final_statement" type="text/html">
+        <div class="panel panel-default col-xs-12">
+            <div class="panel-heading">
+                <h1 class="panel-title" style="text-align: center">人身安全保护令申请书</h1>
+            </div>
+            {{each target}}
+            <ul>
+            {{set tmpA = $value.Applicant}}<li>申请人：{{tmpA.Name}}，{{tmpA.Nationality}}籍{{if tmpA.EthnicGroup}}{{tmpA.EthnicGroup}}族{{/if}}{{tmpA.Gender}}性，出生于 {{set temp = tmpA.Birthdate}}{{temp.substr(0,4)}} 年 {{if temp.substr(5,1) === '0'}}{{ temp.substr(6,1)}}{{else}}{{temp.substr(5,2)}}{{/if}} 月 {{if temp.substr(8,1) === '0'}}{{ temp.substr(9,1)}}{{else}}{{temp.substr(8,2)}}{{/if}} 日，{{tmpA.IDType}}号码 {{tmpA.IDNumber}}，住{{tmpA.Province}}{{tmpA.City}}{{tmpA.District}}{{tmpA.Address}}{{if tmpA.Occupation}}，目前为{{tmpA.Occupation}}{{/if}}；</li>
+
+            {{if tmpA.Relationship !== "本人"}}{{set tmpB = $value.Delegate}}<li>法定代理人：申请人的{{tmpA.Relationship}}，{{tmpB.Name}}，{{tmpB.Nationality}}籍{{if tmpB.EthnicGroup}}{{tmpB.EthnicGroup}}族{{/if}}{{tmpB.Gender}}性，出生于 {{set temp = tmpB.Birthdate}}{{temp.substr(0,4)}} 年 {{if temp.substr(5,1) === '0'}}{{ temp.substr(6,1)}}{{else}}{{temp.substr(5,2)}}{{/if}} 月 {{if temp.substr(8,1) === '0'}}{{ temp.substr(9,1)}}{{else}}{{temp.substr(8,2)}}{{/if}} 日，{{tmpB.IDType}}号码 {{tmpB.IDNumber}}，住{{tmpB.Province}}{{tmpB.City}}{{tmpB.District}}{{tmpB.Address}}{{if tmpB.Occupation}}，目前为{{tmpB.Occupation}}{{/if}}；</li>{{/if}}
+
+            {{if $value.Representative.Clientage === "是"}}{{set tmpC = $value.Representative}}<li>委托诉讼代理人：{{tmpC.Name}}，{{tmpC.Nationality}}籍{{if tmpC.EthnicGroup}}{{tmpC.EthnicGroup}}族{{/if}}{{tmpC.Gender}}性，出生于 {{tmpC.Birthdate.substr(0,4)}} 年 {{if tmpC.Birthdate.substr(5,1) === '0'}}{{ tmpC.Birthdate.substr(6,1)}}{{else}}{{tmpC.Birthdate.substr(5,2)}}{{/if}} 月 {{if tmpC.Birthdate.substr(8,1) === '0'}}{{ tmpC.Birthdate.substr(9,1)}}{{else}}{{tmpC.Birthdate.substr(8,2)}}{{/if}} 日，{{tmpC.IDType}}号码 {{tmpC.IDNumber}}，住{{tmpC.Province}}{{tmpC.City}}{{tmpC.District}}{{tmpC.Address}}{{if tmpC.Occupation}}，目前为{{tmpC.Occupation}}{{/if}}；</li>{{/if}}
+
+            {{set tmpD = $value.Respondent}}<li>被申请人：{{tmpD.Name}}，{{tmpD.Nationality}}籍{{if tmpD.EthnicGroup}}{{tmpD.EthnicGroup}}族{{/if}}{{tmpD.Gender}}性，出生于 {{tmpD.Birthdate.substr(0,4)}} 年 {{if tmpD.Birthdate.substr(5,1) === '0'}}{{ tmpD.Birthdate.substr(6,1)}}{{else}}{{tmpD.Birthdate.substr(5,2)}}{{/if}} 月 {{if tmpD.Birthdate.substr(8,1) === '0'}}{{ tmpD.Birthdate.substr(9,1)}}{{else}}{{tmpD.Birthdate.substr(8,2)}}{{/if}} 日，{{tmpD.IDType}}号码 {{tmpD.IDNumber}}，住{{tmpD.Province}}{{tmpD.City}}{{tmpD.District}}{{tmpD.Address}}{{if tmpD.Occupation}}，目前为{{tmpD.Occupation}}{{/if}}；</li>
+            </ul>
+            <h2>请求事项：</h2>
+            <p>　　现申请人请求法院就被申请人做出以下限制，以保护申请人及 / 或其未成年子女的人身安全：</p>
+            <ol>
+                {{if $value.Requests.Measurement1}}
+                <li>{{$value.Requests.Measurement1}}</li>{{/if}} {{if $value.Requests.Measurement2}}
+                <li>{{$value.Requests.Measurement2}}</li>{{/if}} {{if $value.Requests.Measurement3}}
+                <li>{{$value.Requests.Measurement3}}</li>{{/if}} {{if $value.Requests.Measurement4}}
+                <li>{{$value.Requests.Measurement4}}</li>{{/if}} {{if $value.Requests.Measurement5}}
+                <li>{{$value.Requests.Measurement5}}</li>{{/if}} {{if $value.Requests.Measurement6}}
+                <li>{{$value.Requests.Measurement6}}</li>{{/if}} {{if $value.Requests.Measurement7}}
+                <li>{{$value.Requests.Measurement7}}</li>{{/if}} {{if $value.Requests.Measurement8}}
+                <li>{{$value.Requests.Measurement8}}</li>{{/if}} {{if $value.Requests.Measurement9}}
+                <li>{{$value.Requests.Measurement9}}</li>{{/if}} {{if $value.Requests.Measurement10}}
+                <li>{{$value.Requests.Measurement10}}</li>{{/if}}
+            </ol>
+            <h2>请求理由：</h2>
+            <p>　　申请人请求法院做出这些限制的理由可归纳如下：</p>
+            {{if $value.Reasons1.Abstract}}
+            <h3>（{{$value.Reasons1.Date}}、{{$value.Reasons1.Place}}）{{$value.Reasons1.Abstract}}</h3>
+            <p>　　{{$value.Reasons1.Detail}}</p>
+            {{if $value.Reasons1.Photo1_B64}}
+            <p class="description"><img src="{{$value.Reasons1.Photo1_B64}}" ></p>
+            {{if $value.Reasons1.Description1}}
+            <p class="description">{{$value.Reasons1.Description1}}</p>{{/if}}{{/if}} {{if $value.Reasons1.Photo2_B64}}
+            <p class="description"><img src="{{$value.Reasons1.Photo2_B64}}" ></p>
+            {{if $value.Reasons1.Description2}}
+            <p class="description">{{$value.Reasons1.Description2}}</p>{{/if}}{{/if}} {{if $value.Reasons1.Photo3_B64}}
+            <p class="description"><img src="{{$value.Reasons1.Photo3_B64}}" ></p>
+            {{if $value.Reasons1.Description3}}
+            <p class="description">{{$value.Reasons1.Description3}}</p>{{/if}}{{/if}} {{if $value.Reasons1.Photo4_B64}}
+            <p class="description"><img src="{{$value.Reasons1.Photo4_B64}}" ></p>
+            {{if $value.Reasons1.Description4}}
+            <p class="description">{{$value.Reasons1.Description4}}</p>{{/if}}{{/if}}
+            {{/if}}
+            {{if $value.Reasons2.Abstract}}
+            <h3>（{{$value.Reasons2.Date}}、{{$value.Reasons2.Place}}）{{$value.Reasons2.Abstract}}</h3>
+            <p>　　{{$value.Reasons2.Detail}}</p>
+            {{if $value.Reasons2.Photo1_B64}}
+            <p class="description"><img src="{{$value.Reasons2.Photo1_B64}}" ></p>
+            {{if $value.Reasons2.Description1}}
+            <p class="description">{{$value.Reasons2.Description1}}</p>{{/if}}{{/if}} {{if $value.Reasons2.Photo2_B64}}
+            <p class="description"><img src="{{$value.Reasons2.Photo2_B64}}" ></p>
+            {{if $value.Reasons2.Description2}}
+            <p class="description">{{$value.Reasons2.Description2}}</p>{{/if}}{{/if}} {{if $value.Reasons2.Photo3_B64}}
+            <p class="description"><img src="{{$value.Reasons2.Photo3_B64}}" ></p>
+            {{if $value.Reasons2.Description3}}
+            <p class="description">{{$value.Reasons2.Description3}}</p>{{/if}}{{/if}} {{if $value.Reasons2.Photo4_B64}}
+            <p class="description"><img src="{{$value.Reasons2.Photo4_B64}}" ></p>
+            {{if $value.Reasons2.Description4}}
+            <p class="description">{{$value.Reasons2.Description4}}</p>{{/if}}{{/if}} {{/if}} {{if $value.Reasons3.Abstract}}
+            <h3>（{{$value.Reasons3.Date}}、{{$value.Reasons3.Place}}）{{$value.Reasons3.Abstract}}</h3>
+            <p>　　{{$value.Reasons3.Detail}}</p>
+            {{if $value.Reasons3.Photo1_B64}}
+            <p class="description"><img src="{{$value.Reasons3.Photo1_B64}}" ></p>
+            {{if $value.Reasons3.Description1}}
+            <p class="description">{{$value.Reasons3.Description1}}</p>{{/if}}{{/if}} {{if $value.Reasons3.Photo2_B64}}
+            <p class="description"><img src="{{$value.Reasons3.Photo2_B64}}" ></p>
+            {{if $value.Reasons3.Description2}}
+            <p class="description">{{$value.Reasons3.Description2}}</p>{{/if}}{{/if}} {{if $value.Reasons3.Photo3_B64}}
+            <p class="description"><img src="{{$value.Reasons3.Photo3_B64}}" ></p>
+            {{if $value.Reasons3.Description3}}
+            <p class="description">{{$value.Reasons3.Description3}}</p>{{/if}}{{/if}} {{if $value.Reasons3.Photo4_B64}}
+            <p class="description"><img src="{{$value.Reasons3.Photo4_B64}}" ></p>
+            {{if $value.Reasons3.Description4}}
+            <p class="description">{{$value.Reasons3.Description4}}</p>{{/if}}{{/if}}
+            {{/if}}
+            {{if $value.Reasons4.Abstract}}
+            <h3>（{{$value.Reasons4.Date}}、{{$value.Reasons4.Place}}）{{$value.Reasons4.Abstract}}</h3>
+            <p>　　{{$value.Reasons4.Detail}}</p>
+            {{if $value.Reasons4.Photo1_B64}}
+            <p class="description"><img src="{{$value.Reasons4.Photo1_B64}}" ></p>
+            {{if $value.Reasons4.Description1}}
+            <p class="description">{{$value.Reasons4.Description1}}</p>{{/if}}{{/if}} {{if $value.Reasons4.Photo2_B64}}
+            <p class="description"><img src="{{$value.Reasons4.Photo2_B64}}" ></p>
+            {{if $value.Reasons4.Description2}}
+            <p class="description">{{$value.Reasons4.Description2}}</p>{{/if}}{{/if}} {{if $value.Reasons4.Photo3_B64}}
+            <p class="description"><img src="{{$value.Reasons4.Photo3_B64}}" ></p>
+            {{if $value.Reasons4.Description3}}
+            <p class="description">{{$value.Reasons4.Description3}}</p>{{/if}}{{/if}} {{if $value.Reasons4.Photo4_B64}}
+            <p class="description"><img src="{{$value.Reasons4.Photo4_B64}}" ></p>
+            {{if $value.Reasons4.Description4}}
+            <p class="description">{{$value.Reasons4.Description4}}</p>{{/if}}{{/if}}
+            {{/if}}
+            {{if $value.Reasons5.Abstract}}
+            <h3>（{{$value.Reasons5.Date}}、{{$value.Reasons5.Place}}）{{$value.Reasons5.Abstract}}</h3>
+            <p>　　{{$value.Reasons5.Detail}}</p>
+            {{if $value.Reasons5.Photo1_B64}}
+            <p class="description"><img src="{{$value.Reasons5.Photo1_B64}}" ></p>
+            {{if $value.Reasons5.Description1}}
+            <p class="description">{{$value.Reasons5.Description1}}</p>{{/if}}{{/if}} {{if $value.Reasons5.Photo2_B64}}
+            <p class="description"><img src="{{$value.Reasons5.Photo2_B64}}" ></p>
+            {{if $value.Reasons5.Description2}}
+            <p class="description">{{$value.Reasons5.Description2}}</p>{{/if}}{{/if}} {{if $value.Reasons5.Photo3_B64}}
+            <p class="description"><img src="{{$value.Reasons5.Photo3_B64}}" ></p>
+            {{if $value.Reasons5.Description3}}
+            <p class="description">{{$value.Reasons5.Description3}}</p>{{/if}}{{/if}} {{if $value.Reasons5.Photo4_B64}}
+            <p class="description"><img src="{{$value.Reasons5.Photo4_B64}}" ></p>
+            {{if $value.Reasons5.Description4}}
+            <p class="description">{{$value.Reasons5.Description4}}</p>{{/if}}{{/if}}
+            {{/if}}
+            <p>此致</p>
+            <p>　　{{tmpA.Province}}{{tmpA.City}}{{tmpA.District}}人民法院</p>
+
+            <p>　</p>
+            <p>　</p>
+            <p>　</p>
+            <p style="text-align:right">申请人签名：{{tmpA.Name}}</p>
+            <p style="text-align:right">{{if tmpA.Relationship !== "本人"}}（由其法定代理人、{{tmpA.Relationship}}：{{tmpB.Name}}代为签署）{{/if}}</p>
+            <p style="text-align:right">{{ $value.year }} 年 {{ $value.month }} 月 {{ $value.day }} 日</p>
+        </div>
+        {{/each}}
+
+
+    </script>
+    <script id="pic-tpl" type="text/html">
+        {{each target}}
+        <div class="panel panel-default col-sm-12">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{$value.title}}</h3>
+                <p>{{$value.hint}}</p>
+            </div>
+            <div class="panel-body">
+                <form class="needs-validation" id="{{$value.id}}" onsubmit="submit_form(event)">
+                    <div class="form-row">
+                        {{each $value.questions}}
+                        <div class="form-group col-sm-{{if $value.width}}{{$value.width}}{{else}}12{{/if}}" id="{{$value.id}}_Div">
+                            <label for="{{$value.id}}">{{$value.title}}</label>
+                            {{ if $value.type !== "textarea" }} {{ if $value.type === "file" }}
+                            <img id="{{$value.id}}_Preview" src="" class="rounded mx-auto d-block description" />
+                            <input type="text" class="form-control" hidden name="{{$value.id}}_B64" id="{{$value.id}}_B64" onchange="displayPic('{{$value.id}}')"> {{/if}}
+                            <input type="{{$value.type}}" class="form-control {{if $value.required}}is-invalid{{/if}}" name="{{$value.id}}" id="{{$value.id}}" aria-describedby="{{$value.id}}_Hint" placeholder="{{$value.placeholder}}" list="{{$value.id}}_List" onchange="{{if $value.onchange}}{{$value.onchange}}{{else if $value.required}}checkEmpty({{$value.id}}){{/if}}">
+                            <datalist id="{{$value.id}}_List">
+                                {{each $value.selections}}
+                                <option value="{{$value}}">{{$value}}</option>
+                                {{/each}}
+                            </datalist>
+                            {{else}}
+                            <textarea class="form-control {{if $value.required}}is-invalid{{/if}}" name="{{$value.id}}" id="{{$value.id}}" aria-describedby="{{$value.id}}_Hint" rows="3" onchange="{{if $value.onchange}}{{$value.onchange}}{{else if $value.required}}checkEmpty({{$value.id}}){{/if}}"></textarea>
+                            {{/if}}
+                            <small id="{{$value.id}}_Hint" class="form-text text-muted">{{$value.hint}}</small>
+                            <div class="valid-feedback">
+                                {{$value.validHint}}
+                            </div>
+                            <div class="invalid-feedback">
+                                {{$value.invalidHint}}
+                            </div>
+                        </div>
+                        {{/each}}
+                        <div class="form-group col-sm-12">
+                            <button>提交表单</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="panel-footer"><p class="float-right"><a href="#block-{{$value.title}}">回到标题</a><a href="#">回到顶端</a></p></div> -->
+        </div>
+        {{/each}}
+    </script>
+    <script src="js/data.js"></script>
+    <script src="js/validate.js"></script>
+    <script src="js/site.js"></script>
+</body>
+
+</html>
